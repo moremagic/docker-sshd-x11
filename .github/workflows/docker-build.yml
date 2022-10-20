@@ -21,10 +21,10 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build -t ${GITHUB_REPOSITORY}:${GITHUB_REF##*/} .
+        run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
 
       - name: Deploy :latest
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: ${GITHUB_REPOSITORY}:${GITHUB_REF##*/}
+          args: push ${GITHUB_REPOSITORY}:${IMAGE_TAG}
