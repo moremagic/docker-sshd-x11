@@ -19,9 +19,12 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_REGISTRY_URL: docker.io
 
-      - name: Build :latest & Tag
+      - name: Build :Tag
         if: success()
         run: docker build -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
+
+      - name: Build :latest
+        if: success()
         run: docker build -t ${GITHUB_REPOSITORY}:latest .
 
       - name: Deploy :Tag
