@@ -21,7 +21,7 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build -t ${$GITHUB_REPOSITORY}:${GITHUB_REF##*/} .
+        run: docker build -t ${GITHUB_REPOSITORY}:${GITHUB_REF##*/} .
 
       - name: Deploy :latest
         if: success()
