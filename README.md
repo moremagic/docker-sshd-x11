@@ -19,11 +19,12 @@ Docker container with X11 forwerding enabled
    - 環境設定 -> セキュリティ -> ネットワーク・クライアントからの接続を許可 にチェックを入れる
 4. Container start
    ```
-   docker run -dP --rm --name my-container moremagic/docker-x11-sshd
+   docker run -dP --rm --name my-container moremagic/docker-sshd-x11
    ```
 5. ssh login and start X11 apps
    ```
    ssh -X -p $(docker port my-container 22|sed 's/.*://') root@localhost
+   root@localhost's password: root
 
    xcalc
    ```
