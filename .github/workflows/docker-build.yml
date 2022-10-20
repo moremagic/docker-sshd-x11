@@ -21,10 +21,10 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build -t ${{ github.repository }}:${IMAGE_TAG} .
+        run: docker build -t ${DOCKER_USERNAME}/${{ github.repository }}:${IMAGE_TAG} .
 
       - name: Deploy :latest
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: ${{ github.repository }}:${IMAGE_TAG}
+          args: ${DOCKER_USERNAME}/${{ github.repository }}:${IMAGE_TAG}
