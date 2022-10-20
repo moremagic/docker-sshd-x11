@@ -19,6 +19,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_REGISTRY_URL: docker.io
 
+      - run: echo ${GITHUB_REF##*/}
       - name: Build :latest
         if: success()
         run: docker build -t moremagic/${{ github.repository }}:${{ github.ref }} .
