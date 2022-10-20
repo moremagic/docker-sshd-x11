@@ -21,10 +21,10 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:${IMAGE_TAG} .
+        run: docker build -t moremagic/${{ github.repository }}:${{ github.ref }} .
 
       - name: Deploy :latest
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:${IMAGE_TAG}
+          args: moremagic/${{ github.repository }}:${{ github.ref }}
